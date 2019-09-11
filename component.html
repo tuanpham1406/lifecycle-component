@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lifecycle Component</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1> {{ title }} </h1>
+    <button v-on:click="title = 'Changed with event click'">Update Event</button>
+    <button v-on:click="destroyEvent">Destroy Event</button>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'VueJs Instance Lifecycle',
+        },
+        beforeCreate: function () {
+            console.log('before created !')
+        },
+        created: function () {
+            console.log('created !');
+        },
+        beforeMount: function () {
+            console.log('before mounted !');
+        },
+        mounted: function () {
+            console.log('mounted !');
+        },
+        beforeUpdate: function () {
+            console.log('before updated !');
+        },
+        updated: function () {
+            console.log('update !');
+        },
+        beforeDestroy: function () {
+            console.log('before destroyed !');
+        },
+        destroyed: function () {
+            console.log('destroyed !');
+        },
+        methods: {
+            destroyEvent: function () {
+                this.$destroy();
+            }
+        }
+    });
+</script>
+</body>
+</html>
